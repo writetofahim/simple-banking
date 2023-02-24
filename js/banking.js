@@ -21,15 +21,24 @@ function updateBalance(inputAmount, isAdd) {
   }
   balanceField.innerText = newBalance;
 }
+
 //handle deposit event
 document.getElementById("deposit-btn").addEventListener("click", function () {
   const inputAmount = getInputValue("deposit-input");
+  if (isNaN(inputAmount) || inputAmount <= 0) {
+    alert("Please enter a valid amount");
+    return;
+  }
   UpdateTotal("deposit-total", inputAmount);
   updateBalance(inputAmount, true);
 });
 //handle withdraw event
 document.getElementById("withdraw-btn").addEventListener("click", function () {
   const inputAmount = getInputValue("withdraw-input");
+  if (isNaN(inputAmount) || inputAmount <= 0) {
+    alert("Please enter a valid amount");
+    return;
+  }
   UpdateTotal("withdraw-total", inputAmount);
   updateBalance(inputAmount, false);
 });
